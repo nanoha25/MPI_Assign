@@ -18,22 +18,20 @@ int Rand_Gen()
 
 int main()
 {
-  int j;
-  j = Rand_Gen();
-  if (j>=0 && j<20)
-  {
-	  printf("Nanoha\n");
-  }
-  else if (j>=20 && j<40)
-  {
-	  printf("Fate\n");
-  }
-  else if (j>=40 && j<60)
-  {
-	  printf("Hayate\n");
-  }
-  else
-  {
-	  printf("Uh-Oh.");
-  }
+	int array[];
+	int i; //array size. 
+	char *size_arr
+	int str_size = 10000; 
+	int j; //variable for entering. 
+	int k;
+	puts ("Enter array size");
+	size_arr=(char *) malloc (str_size+1);
+	getline (&size_arr, &str_size, stdin);
+	i=sscanf(size_arr, "%d", &j)
+	for (k=0;k<i;k++)
+	{
+		array[k]=89; 
+		printf("%d|",array[k])
+	}
+
 }
