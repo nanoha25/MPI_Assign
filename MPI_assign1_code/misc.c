@@ -22,15 +22,15 @@ int main()
   j = Rand_Gen();
   if (j>=0 && j<20)
   {
-	  printf("Nanoha");
+	  printf("Nanoha\n");
   }
   else if (j>=20 && j<40)
   {
-	  printf("Fate");
+	  printf("Fate\n");
   }
   else if (j>=40 && j<60)
   {
-	  printf("Hayate");
+	  printf("Hayate\n");
   }
   else
   {

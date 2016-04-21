@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+/*This is random number generator
+Generates a number between a predefined range.
+*/
 int Rand_Gen()
 {
   int rndnum;
@@ -16,6 +19,8 @@ int Rand_Gen()
   return rndnum;
 }
 
+/*This method is used to initialize board.
+*/
 void board_init()
 {
   int i=0;
@@ -26,42 +31,31 @@ void board_init()
   {
     grid[i]==0;
   }
-  //then put red/blue block on it.
+  //then put red/blue block on it. Use a predefined random number generator outside this method.
   for(i=0;i<n*n;i++)
   {
-    //Needs a good random generator.
     int vlu; //this variable will be used to help put squares on board.
-    
-    //Or predefine the iteration as below.
-    grid[i]=1;
-    grid[i+2]=0;
-    grid[i+5]=2;
+    vlu = Rand_Gen();
+    if (vlu>=0 && vlu<20)
+    {
+      grid[i]=0;
+    }
+    else if (vlu>=20 && vlu<40)
+    {
+      grid[i]=1;
+    }
+    else if (vlu>=40 && vlu<60)
+    {
+      grid[i]=2;
+    }
+    else
+    {
+      grid[i]=0;
+    }
   }
 }
 
-/*following function will feature asking user to enter parameter when running program.
-*/
-int Param_Enter()
-{
-  int nbytes = 100;
-  char *my_string;
-  int int1, int2, int3, int4;
-  int args_assigned;
 
-  args_assigned = 0;
-
-  while (args_assigned != 4)
-    {
-      puts ("Please enter three integers separated by whitespace.");
-      my_string = (char *) malloc (nbytes + 1);
-      getline (&my_string, &nbytes, stdin);
-      args_assigned = sscanf (my_string, "%d %d %d", &int1, &int2, &int3);
-      if (args_assigned != 4)
-	       puts ("\nInput invalid!");
-    }
-
-  return 0;
-}
 /*
   white = 0, red = 1, blue = 2,
   red just moved in = 3, and blue just moved in = 4,
@@ -166,7 +160,7 @@ int board_split()
   /* This method is used to slice a portion of board.
   Basically calls a sub array containing data in main array.
   */
-
+  
 }
 
 
