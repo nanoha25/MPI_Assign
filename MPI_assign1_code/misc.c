@@ -18,7 +18,7 @@ int Rand_Gen()
 
 int ArraySize()
 {
-  int nbytes = 100;
+  unsigned long nbytes = 100;
   char *my_string;
   int int1;
   int args_assigned;
@@ -30,7 +30,7 @@ int ArraySize()
       getline (&my_string, &nbytes, stdin);
       args_assigned = sscanf (my_string, "%d", &int1);
 
-  return my_string;
+  return int1;
 }
 /*
 int CreateArray()
