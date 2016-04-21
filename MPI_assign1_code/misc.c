@@ -18,20 +18,21 @@ int Rand_Gen()
 
 int main()
 {
-	int array[];
-	int i; //array size. 
-	char *size_arr
-	int str_size = 10000; 
-	int j; //variable for entering. 
-	int k;
+	int array[5];
+	int i; //array size.
+	char *size_arr;
+	int str_size = 10000;
+	int j; //variable for entering.
+  int k;
 	puts ("Enter array size");
 	size_arr=(char *) malloc (str_size+1);
 	getline (&size_arr, &str_size, stdin);
-	i=sscanf(size_arr, "%d", &j)
+	i=sscanf(size_arr, "%d", &j);
 	for (k=0;k<i;k++)
 	{
-		array[k]=89; 
-		printf("%d|",array[k])
+		array[i]=89;
+		printf("%d|",array[i]);
+    i=i+1;
 	}
 
 }
