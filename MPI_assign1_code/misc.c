@@ -20,5 +20,20 @@ int main()
 {
   int j;
   j = Rand_Gen();
-  printf("%d\n",j);
+  if (j>=0 && j<20)
+  {
+	  printf("Nanoha");
+  }
+  else if (j>=20 && j<40)
+  {
+	  printf("Fate");
+  }
+  else if (j>=40 && j<60)
+  {
+	  printf("Hayate")
+  }
+  else
+  {
+	  printf("Uh-Oh.");
+  }
 }
