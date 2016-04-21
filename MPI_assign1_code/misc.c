@@ -30,7 +30,7 @@ int main()
   }
   else if (j>=40 && j<60)
   {
-	  printf("Hayate")
+	  printf("Hayate");
   }
   else
   {
