@@ -30,7 +30,7 @@ int ArraySize()
       getline (&my_string, &nbytes, stdin);
       args_assigned = sscanf (my_string, "%d", &int1);
 
-  return args_assigned;
+  return my_string;
 }
 /*
 int CreateArray()
