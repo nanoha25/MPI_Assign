@@ -37,6 +37,7 @@ void CreateArray()
 {
   int i = ArraySize();
   int j;
+  printf("%d\n",i)
 	int array[i];
 	for (j=0;j<i;j++)
 	{
