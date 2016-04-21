@@ -16,23 +16,29 @@ int Rand_Gen()
   return rndnum;
 }
 
-int main()
+int ArraySize()
 {
-	int array[5];
 	int i; //array size.
 	char *size_arr;
-	int str_size = 10000;
+	int str_size = 126;
 	int j; //variable for entering.
-  int k;
 	puts ("Enter array size");
 	size_arr=(char *) malloc (str_size+1);
 	getline (&size_arr, &str_size, stdin);
 	i=sscanf(size_arr, "%d", &j);
-	for (k=0;k<i;k++)
-	{
-		array[i]=89;
-		printf("%d|",array[i]);
-    i=i+1;
+	return i;
 	}
 
+}
+
+int CreateArray()
+{
+	int j;
+	int array[i];
+	for (j=0;j<i;j++)
+	{
+		array[i]=rndnum;
+		printf("%d", array[i]);
+		i=i+1;
+	}
 }
