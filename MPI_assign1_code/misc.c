@@ -37,13 +37,12 @@ void CreateArray()
 {
   int i = ArraySize();
   int j;
-  printf("%d\n",i)
+  printf("%d\n",i);
 	int array[i];
 	for (j=0;j<i;j++)
 	{
-		array[i] = Rand_Gen();
-		printf("%d", array[i]);
-		i=i+1;
+		array[j] = Rand_Gen();
+		printf("%d", array[j]);
 	}
 }
 
