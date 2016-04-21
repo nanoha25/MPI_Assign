@@ -32,7 +32,7 @@ int ArraySize()
 
   return int1;
 }
-/*
+
 int CreateArray()
 {
   int i = ArraySize();
@@ -45,11 +45,9 @@ int CreateArray()
 		i=i+1;
 	}
 }
-*/
+
 
 int main()
 {
-  int i;
-  i=ArraySize();
-  printf("%d\n",i);
+	CreateArray();
 }
