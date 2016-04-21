@@ -27,18 +27,26 @@ int ArraySize()
 	getline (&size_arr, &str_size, stdin);
 	i=sscanf(size_arr, "%d", &j);
 	return i;
-	}
 
 }
-
+/*
 int CreateArray()
 {
-	int j;
+  int i = ArraySize();
+  int j;
 	int array[i];
 	for (j=0;j<i;j++)
 	{
-		array[i]=rndnum;
+		array[i] = Rand_Gen();
 		printf("%d", array[i]);
 		i=i+1;
 	}
+}
+*/
+
+int main()
+{
+  int i;
+  i=ArraySize();
+  printf("%d\n",i);
 }
