@@ -33,7 +33,7 @@ int ArraySize()
   return int1;
 }
 
-int CreateArray()
+void CreateArray()
 {
   int i = ArraySize();
   int j;
