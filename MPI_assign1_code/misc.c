@@ -18,16 +18,19 @@ int Rand_Gen()
 
 int ArraySize()
 {
-	int i; //array size.
-	char *size_arr;
-	int str_size = 126;
-	int j; //variable for entering.
-	puts ("Enter array size");
-	size_arr=(char *) malloc (str_size+1);
-	getline (&size_arr, &str_size, stdin);
-	i=sscanf(size_arr, "%d", &j);
-	return i;
+  int nbytes = 100;
+  char *my_string;
+  int int1;
+  int args_assigned;
 
+  args_assigned = 0;
+
+      puts ("Array Size?");
+      my_string = (char *) malloc (nbytes + 1);
+      getline (&my_string, &nbytes, stdin);
+      args_assigned = sscanf (my_string, "%d", &int1);
+
+  return args_assigned;
 }
 /*
 int CreateArray()
