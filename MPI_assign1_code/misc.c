@@ -42,7 +42,7 @@ void CreateArray()
 	for (j=0;j<i;j++)
 	{
 		array[j] = Rand_Gen();
-		printf("%d", array[j]);
+		printf("%d\n", array[j]);
 	}
 }
 
