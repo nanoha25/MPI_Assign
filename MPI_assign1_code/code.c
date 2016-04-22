@@ -160,7 +160,7 @@ int board_split()
   /* This method is used to slice a portion of board.
   Basically calls a sub array containing data in main array.
   */
-  
+
 }
 
 
