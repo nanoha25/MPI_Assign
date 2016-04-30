@@ -45,14 +45,17 @@ void CreateArray()
     if (k>0 && k<=30)
     {
       array[j]=4;
+      printf("%d",array[j]);
     }
     else if (k>30 && k<=60)
     {
       array[j]=2;
+      printf("%d",array[j]);
     }
     else
     {
       array[j]=0;
+      printf("%d",array[j]);
     }
 	}
 }
