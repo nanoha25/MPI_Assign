@@ -66,7 +66,7 @@ void board_init()
 
 */
 
-void Iterations()
+int Iterations()
 {
   int i=0; //square position for red.
   int j=0; //square position for blue.
@@ -129,23 +129,47 @@ void Iterations()
       }
     }
   }
+  return 0; //here needs a return of array. Then next method will be used to re-initialise the board.
 }
 
-int MPI_Communicate()
+int board_re_init()
 {
-  /*
-
-  MPI will need to communicate with each sub system
-  after completing each iteration to see
-  if any sub system hits iteration end requirements.
-
-  This method will only be used to control basic communication
-  between sub systems.
+  /*Here board will be re-inialised. 4,5,6 will be replaced to 0,1,2 etc.
+  Completed board will then be sent back to do iteration again.
+  white = 0, red = 1, blue = 2,
+  red just moved in = 3, and blue just moved in = 4,
+  red just moved out = 5, and blue just moved out = 6.
   */
 
+  //insert returned board from Iteration() here.
+  /*Below will replace 5,3 with 0, 1 respectively
+  This stands for red block*/
+  for (i=0;i<n*n;i++)
+  {
+    if(grid[i]==5)
+    {
+      grid[i]=0;
+    }
+    else if(grid[i]==3)
+    {
+      grid[i]=1;
+    }
+  }
+  for (j=0;j<n*n;j++)
+  {
+    if(grid[j]==6)
+    {
+      grid[j]=0;
+    }
+    if(grid[j]==4)
+    {
+      grid[j]=2;
+    }
+  }
+  return 0; //insert pointer of returned array here.
 }
 
-void MPI_Taskdistribute()
+int MPI_Taskdistribute()
 {
   /*Here MPI will distribute works to sub system.
   and then collect the result.
