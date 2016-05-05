@@ -25,7 +25,7 @@ int ArraySize()
 
   args_assigned = 0;
 
-      puts ("Array Size?");
+      puts ("Array Size? (must be large enough)");
       my_string = (char *) malloc (nbytes + 1);
       getline (&my_string, &nbytes, stdin);
       args_assigned = sscanf (my_string, "%d", &int1);
@@ -45,14 +45,18 @@ void CreateArray()
     if (k>0 && k<=30)
     {
       array[j]=4;
+      array[j+2]=23;
+      array[j+5]=900;
       printf("%d",array[j]);
     }
     else if (k>30 && k<=60)
     {
       array[j]=2;
+      array[j+3]=54;
+      array[j+5]=870;
       printf("%d",array[j]);
     }
-    else
+    else //this branch will very unlikely be triggered.
     {
       array[j]=0;
       printf("%d",array[j]);
