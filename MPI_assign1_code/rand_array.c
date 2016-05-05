@@ -37,7 +37,7 @@ void CreateArray()
 {
   int i = ArraySize();
   int j;
-  int k = Rand_Gen();; //use this to determine the condition to put the block.
+  int k = Rand_Gen(); //use this to determine the condition to put the block.
   printf("%d\n",i);
 	int array[i];
 	for (j=0;j<i;j++)
