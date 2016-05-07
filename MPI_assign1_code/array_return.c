@@ -7,10 +7,8 @@ int Rand_Gen()
 {
   int rndnum;
 
-  time_t t;
-
   /* Initialize random number generator */
-  srand((unsigned)time(&t));
+  srand((unsigned)time(NULL));
   rndnum = rand()%60;
 
   return rndnum;
@@ -33,7 +31,7 @@ int ArraySize()
   return int1;
 }
 
-int CreateArray()
+int * CreateArray()
 {
   int i = ArraySize();
   int j;
@@ -45,24 +43,33 @@ int CreateArray()
     if (k>0 && k<=30)
     {
       array[j]=4;
-      printf("%d",array[j]);
+      printf("%d\n",array[j]);
     }
     else if (k>30 && k<=60)
     {
       array[j]=2;
-      printf("%d",array[j]);
+      printf("%d\n",array[j]);
     }
     else //this branch will very unlikely be triggered.
     {
       array[j]=0;
-      printf("%d",array[j]);
+      printf("%d\n",array[j]);
     }
 	}
-  return 
+  return array;
 }
 
 
 int main()
 {
-	CreateArray();
+  int *p;
+  int i;
+  int k = ArraySize();
+  p = CreateArray();
+
+  for (i=0;i<k;i++)
+  {
+    printf("\n*p+%d):%d\n",i,*(p+i));
+  }
+  return 0;
 }
