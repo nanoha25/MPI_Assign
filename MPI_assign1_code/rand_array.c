@@ -45,21 +45,25 @@ void CreateArray()
     if (k>0 && k<=30)
     {
       array[j]=4;
+      j=j+2;
       array[j+2]=23;
+      j=j+5;
       array[j+5]=900;
       printf("%d",array[j]);
     }
     else if (k>30 && k<=60)
     {
       array[j]=2;
+      j=j+3;
       array[j+3]=54;
+      j=j+5;
       array[j+5]=870;
       printf("%d",array[j]);
     }
     else //this branch will very unlikely be triggered.
     {
       array[j]=0;
-      printf("%d",array[j]);
+      printf("%d\n",array[j]);
     }
 	}
 }
