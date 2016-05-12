@@ -25,10 +25,10 @@ int ArraySize()
 
   args_assigned = 0;
 
-      puts ("Array Size? (must be large enough)");
+      puts ("Array Size?");
       my_string = (char *) malloc (nbytes + 1);
       getline (&my_string, &nbytes, stdin);
-      args_assigned = sscanf (my_string, "%d", &int1);
+      args_assigned = sscanf (my_string, "%d\n", &int1);
 
   return int1;
 }
@@ -45,31 +45,53 @@ void CreateArray()
     if (k>0 && k<=30)
     {
       array[j]=4;
+      printf("k is %d\n",k);
+      printf("j is %d\n",j);
+      printf("array elem: %d\n",array[j]);
       j=j+2;
-      array[j+2]=23;
+      array[j]=3;
+      printf("k is %d\n",k);
+      printf("j is %d\n",j);
+      printf("array elem: %d\n",array[j]);
       j=j+5;
-      array[j+5]=900;
-      printf("%d",array[j]);
+      array[j]=9;
+      printf("k is %d\n",k);
+      printf("j is: %d\n",j);
+      printf("arrary elem: %d\n",array[j]);
+
     }
     else if (k>30 && k<=60)
     {
       array[j]=2;
+      printf("k is %d\n",k);
+      printf("j is %d\n",j);
+      printf("array elem: %d\n",array[j]);
       j=j+3;
-      array[j+3]=54;
+      array[j]=5;
+      printf("k is %d\n",k);
+      printf("j is %d\n",j);
+      printf("array elem: %d\n",array[j]);
       j=j+5;
-      array[j+5]=870;
-      printf("%d",array[j]);
+      array[j]=8;
+      printf("k is %d\n",k);
+      printf("j is %d\n",j);
+      printf("array elem: %d\n",array[j]);
+
     }
     else //this branch will very unlikely be triggered.
     {
       array[j]=0;
+      printf("k is %d\n",k);
+      printf("branch triggered\n");
       printf("%d\n",array[j]);
     }
-	}
+    printf("ACTUAL SIZE: %d\n",j);
+  }
 }
 
 
 int main()
 {
 	CreateArray();
+
 }
