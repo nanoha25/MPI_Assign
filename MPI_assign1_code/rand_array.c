@@ -5,6 +5,13 @@
 //#include <sys/types.h>
 
 int Rand_Gen()
+/*
+  As a random generator, in C, there must be a seed to seed rand()
+  To make sure every time program running, the seed is different, system time (which would never be the same anyway),
+  or PID can be used as seed.
+
+
+*/
 {
   int rndnum;
 
