@@ -10,10 +10,7 @@ int Rand_Gen()
 {
   int rndnum;
 
-  time_t t;
 
-  /* Initialize random number generator */
-  srand((unsigned)time(&t));
   rndnum = rand()%60;
 
   return rndnum;
@@ -183,6 +180,11 @@ int main()
 {
   /*This is the main entrance of program. All other methods will be used in here.
   */
+
+    time_t t;
+
+    /* Initialize random number generator */
+  srand((unsigned)time(&t));
   board_init();
 
 
