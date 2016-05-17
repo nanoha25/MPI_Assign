@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+//#include <unistd.h>
+//#include <sys/types.h>
 
 int Rand_Gen()
 {
   int rndnum;
 
-  time_t t;
-
   /* Initialize random number generator */
-  srand((unsigned)time(&t));
   rndnum = rand()%60;
 
   return rndnum;
@@ -37,11 +35,12 @@ void CreateArray()
 {
   int i = ArraySize();
   int j;
-  int k = Rand_Gen(); //use this to determine the condition to put the block.
+  int k; //use this to determine the condition to put the block.
   printf("%d\n",i);
 	int array[i];
 	for (j=0;j<i;j++)
 	{
+    k = Rand_Gen();
     if (k>0 && k<=30)
     {
       array[j]=4;
@@ -92,6 +91,8 @@ void CreateArray()
 
 int main()
 {
-	CreateArray();
+  time_t t;
+  srand((unsigned)time(&t));
+  CreateArray();
 
 }
