@@ -9,8 +9,16 @@ int Rand_Gen()
   As a random generator, in C, there must be a seed to seed rand()
   To make sure every time program running, the seed is different, system time (which would never be the same anyway),
   or PID can be used as seed.
+  Then, seed will only be used once each time program is running.
+  rand() will use this seed to generate a series of numbers based on that seed. So, as long as seed is the same, random number series is always the same.
 
+  To correctly use a random number generator in C, random generator seed can only be initialized once each time program starts.
+  Then, the series is certain in this program session.
+  Next step, is to call that rand() multiple times in order to get all numbers in that series.
 
+  Even though seed only need to be generated once, choosing how to deliver a random number is just based on preference.
+  Like using a function to generate random number, and then return it, is a good way.
+  
 */
 {
   int rndnum;
