@@ -92,7 +92,7 @@ void CreateArray()
 int main()
 {
   time_t t;
-  srand(time(0));
+  srand((unsigned)time(&t));
   CreateArray();
 
 }
