@@ -19,7 +19,7 @@ int Rand_Gen()
   Even though seed only need to be generated once, choosing how to deliver a random number is just based on preference.
   Like using a function to generate random number, and then return it, is a good way.
 
-  Take this program as a tutorial instructing how to use random number generator. 
+  Take this program as a tutorial instructing how to use random number generator.
 */
 {
   int rndnum;
@@ -47,7 +47,7 @@ int ArraySize()
   return int1;
 }
 
-void CreateArray()
+int *CreateArray()
 {
   int i = ArraySize();
   int j;
@@ -102,6 +102,7 @@ void CreateArray()
     }
     printf("ACTUAL SIZE: %d\n",j);
   }
+  return array;
 }
 
 
@@ -109,6 +110,15 @@ int main()
 {
   time_t t;
   srand((unsigned)time(&t));
-  CreateArray();
 
+  int *p;
+  int i;
+  int k = ArraySize();
+  p = CreateArray();
+
+  for (i=0;i<k;i++)
+  {
+    printf("(\n*p+%d):%d\n",i,*(p+i));
+  }
+  return 0;
 }
