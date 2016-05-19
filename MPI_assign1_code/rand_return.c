@@ -4,7 +4,6 @@
 //#include <unistd.h>
 //#include <sys/types.h>
 
-int arr_size; //This is used to specify array size.
 
 int Rand_Gen()
 /*
@@ -31,7 +30,7 @@ int Rand_Gen()
 
   return rndnum;
 }
-/*
+
 int ArraySize()
 {
   unsigned long nbytes = 100;
@@ -48,9 +47,10 @@ int ArraySize()
 
   return int1;
 }
-*/
-int *CreateArray(int arr_size)
+
+int *CreateArray()
 {
+  int i = ArraySize();
   int j;
   int k; //use this to determine the condition to put the block.
   printf("%d\n",arr_size);
@@ -94,11 +94,11 @@ int main(int argc, char** argv)
 
   int *p;
   int i;
-
-  p = CreateArray(argc);
+  int k = ArraySize();
+  p = CreateArray();
   printf("\nvalue p is: %d",*p);
 
-  for (i=0;i<arr_size;i++)
+  for (i=0;i<k;i++)
   {
     printf("(\n*p+%d):%d\n",i,*(p+i));
   }
