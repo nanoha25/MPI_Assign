@@ -69,7 +69,7 @@ int main()
 
   for (i=0;i<k;i++)
   {
-    printf("(\n*p+%d):%d\n",i,*(p+i));
+    printf("\n*p+%d):%d\n",i,*(p+i));
   }
   return 0;
 }

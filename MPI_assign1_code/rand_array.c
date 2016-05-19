@@ -18,8 +18,7 @@ int Rand_Gen()
 
   Even though seed only need to be generated once, choosing how to deliver a random number is just based on preference.
   Like using a function to generate random number, and then return it, is a good way.
-
-  Take this program as a tutorial instructing how to use random number generator. 
+  
 */
 {
   int rndnum;
