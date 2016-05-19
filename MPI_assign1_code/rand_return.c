@@ -4,6 +4,8 @@
 //#include <unistd.h>
 //#include <sys/types.h>
 
+int arr_size; //This is used to specify array size.
+
 int Rand_Gen()
 /*
   As a random generator, in C, there must be a seed to seed rand()
@@ -29,7 +31,7 @@ int Rand_Gen()
 
   return rndnum;
 }
-
+/*
 int ArraySize()
 {
   unsigned long nbytes = 100;
@@ -46,15 +48,14 @@ int ArraySize()
 
   return int1;
 }
-
-int *CreateArray()
+*/
+int *CreateArray(int arr_size)
 {
-  int i = ArraySize();
   int j;
   int k; //use this to determine the condition to put the block.
-  printf("%d\n",i);
-	int array[i];
-	for (j=0;j<i;j++)
+  printf("%d\n",arr_size);
+	int array[arr_size];
+	for (j=0;j<arr_size;j++)
 	{
     k = Rand_Gen();
     if (k>0 && k<=30)
@@ -106,17 +107,18 @@ int *CreateArray()
 }
 
 
-int main()
+int main(int argc, char** argv)
 {
   time_t t;
   srand((unsigned)time(&t));
 
   int *p;
   int i;
-  int k = ArraySize();
-  p = CreateArray();
 
-  for (i=0;i<k;i++)
+  p = CreateArray(argc);
+  printf("\nvalue p is: %d",*p);
+
+  for (i=0;i<arr_size;i++)
   {
     printf("(\n*p+%d):%d\n",i,*(p+i));
   }
