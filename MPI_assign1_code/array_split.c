@@ -138,5 +138,6 @@ int main(int argc, char** argv)
   {
     printf("(\n*p+%d):%d\n",i,*(p+i));
   }
+  SplitArray();
   return 0;
 }
