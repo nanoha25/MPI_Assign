@@ -64,31 +64,11 @@ int *CreateArray(int arr_size)
       printf("k is %d\n",k);
       printf("j is %d\n",j);
       printf("array elem: %d\n",array[j]);
-      j=j+2;
-      array[j]=3;
-      printf("k is %d\n",k);
-      printf("j is %d\n",j);
-      printf("array elem: %d\n",array[j]);
-      j=j+5;
-      array[j]=9;
-      printf("k is %d\n",k);
-      printf("j is: %d\n",j);
-      printf("arrary elem: %d\n",array[j]);
 
     }
     else if (k>30 && k<=60)
     {
       array[j]=2;
-      printf("k is %d\n",k);
-      printf("j is %d\n",j);
-      printf("array elem: %d\n",array[j]);
-      j=j+3;
-      array[j]=5;
-      printf("k is %d\n",k);
-      printf("j is %d\n",j);
-      printf("array elem: %d\n",array[j]);
-      j=j+5;
-      array[j]=8;
       printf("k is %d\n",k);
       printf("j is %d\n",j);
       printf("array elem: %d\n",array[j]);
