@@ -53,9 +53,9 @@ int *CreateArray()
   int i = ArraySize();
   int j;
   int k; //use this to determine the condition to put the block.
-  printf("%d\n",arr_size);
-	int array[arr_size];
-	for (j=0;j<arr_size;j++)
+  printf("%d\n",i);
+	int array[i];
+	for (j=0;j<i;j++)
 	{
     k = Rand_Gen();
     if (k>0 && k<=30)
