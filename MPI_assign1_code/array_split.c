@@ -89,7 +89,7 @@ int *CreateArray()
 
 int SplitArray()
 {
-  int initarr = CreateArray();
+  int *initarr = CreateArray();
   int arrsize = ArraySize();
   int halve = arrsize/2;
   int n;
@@ -109,8 +109,8 @@ int SplitArray()
     exit(0);
   }
 
-  memcpy(firsthalf, initarr, (halve)*sizeof(int));
-  memcpy(secondhalf, initarr + halve, (halve)*sizeof(int));
+  memcpy(*firsthalf, *initarr, (halve)*sizeof(int));
+  memcpy(*secondhalf, *initarr + halve, (halve)*sizeof(int));
 
   for (n=0;n<halve;n++)
   {
