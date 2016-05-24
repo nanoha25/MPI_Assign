@@ -56,6 +56,8 @@ int *CreateArray()
   int k; //use this to determine the condition to put the block.
   printf("%d\n",i);
 	int array[i];
+  *array = (int *) malloc(sizeof(int));
+
 	for (j=0;j<i;j++)
 	{
     k = Rand_Gen();
@@ -94,32 +96,31 @@ void SplitArray()
   int halve = arrsize/2;
   int n;
   int *firsthalf = malloc(halve * sizeof(int));
+  int *secondhalf = malloc(halve * sizeof(int));
 
   if (!firsthalf)
   {
     printf("Internal Error!");
-    exit(0);
+    exit(1);
   }
-
-  int *secondhalf = malloc(halve * sizeof(int));
 
   if(!secondhalf)
   {
     printf("Internal Error!");
-    exit(0);
+    exit(1);
   }
 
-  memcpy(firsthalf, *initarr, (halve)*sizeof(int));
-  memcpy(secondhalf, *initarr + halve, (halve)*sizeof(int));
+  memcpy(firsthalf, initarr, (halve)*sizeof(int));
+  memcpy(secondhalf, initarr + halve, (halve)*sizeof(int));
 
   for (n=0;n<halve;n++)
   {
-    printf("\n*%d element of firsthalf is",n,*(firsthalf+n));
+    printf("\n*%d element of firsthalf is: %d\n",n,*(firsthalf+n));
   }
 
   for (n=0;n<halve;n++)
   {
-    printf("\n*%d element of secondhalf is",n,*(secondhalf+n));
+    printf("\n*%d element of secondhalf is %d\n",n,*(secondhalf+n));
   }
 }
 

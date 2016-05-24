@@ -100,7 +100,7 @@ int main(int argc, char** argv)
 
   for (i=0;i<k;i++)
   {
-    printf("(\n*p+%d):%d\n",i,*(p+i));
+    printf("\n(*p+%d):%d\n",i,*(p+i));
   }
   return 0;
 }
