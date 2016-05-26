@@ -95,6 +95,7 @@ void SplitArray()
   int arrsize = ArraySize();
   int halve = arrsize/2;
   int n;
+  
   int *firsthalf = malloc(halve * sizeof(int));
   int *secondhalf = malloc(halve * sizeof(int));
 
@@ -125,7 +126,7 @@ void SplitArray()
 }
 
 
-int main(int argc, char** argv)
+int main(int argc, char** argv[])
 {
   time_t t;
   srand((unsigned)time(&t));
