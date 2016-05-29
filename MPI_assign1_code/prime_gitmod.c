@@ -45,6 +45,7 @@ Boolean verbose = FALSE; // if TRUE, show timings and count
 /*              Function definitions                            */
 /****************************************************************/
 int main(int argc, char **argv) {
+	unsigned int i = 0;
 	int c;
 	unsigned int t = 0;
 	double seconds;
