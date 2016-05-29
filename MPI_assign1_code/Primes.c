@@ -2,7 +2,7 @@
 
 // threads-based program to find the number of primes between 2 and n;
 // uses the Sieve of Eratosthenes, deleting all multiples of 2, all
-// multiples of 3, all multiples of 5, etc. 
+// multiples of 3, all multiples of 5, etc.
 
 // for illustration purposes only; NOT CLAIMED TO BE EFFICIENT
 
@@ -64,12 +64,12 @@ void *worker(int tn)  // tn is the thread number (0,1,...)
             work++;  // log work done by this thread
          }
       }
-      else return work; 
+      else return work;
    } while (1);
 }
 
-main(int argc, char **argv)
-{  int nprimes,  // number of primes found 
+int main(int argc, char **argv)
+{  int nprimes,  // number of primes found
        i,work;
    n = atoi(argv[1]);
    nthreads = atoi(argv[2]);
@@ -83,7 +83,7 @@ main(int argc, char **argv)
    // get threads started
    for (i = 0; i < nthreads; i++)  {
       // this call says create a thread, record its ID in the array
-      // id, and get the thread started executing the function worker(), 
+      // id, and get the thread started executing the function worker(),
       // passing the argument i to that function
       pthread_create(&id[i],NULL,worker,i);
    }
@@ -97,7 +97,7 @@ main(int argc, char **argv)
       pthread_join(id[i],&work);
       printf("%d values of base done\n",work);
    }
-   
+
    // report results
    nprimes = 1;
    for (i = 3; i <= n; i++)
@@ -105,10 +105,11 @@ main(int argc, char **argv)
          nprimes++;
       }
    printf("the number of primes found was %d\n",nprimes);
+   return 0;
 }
 
-/* 
-debugging threaded programs under GDB (and the various GUIs that use 
+/*
+debugging threaded programs under GDB (and the various GUIs that use
 GDB internally)
 
 As you run a program under GDB, the creation of new threads will
