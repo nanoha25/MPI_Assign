@@ -50,7 +50,7 @@ Boolean verbose = FALSE; // if TRUE, show timings and count
 int main(int argc, char **argv) {
 	unsigned int i, j = 0;
 	int c;
-	unsigned long t = 0;
+	unsigned int t = 0;
 	double seconds;
 	time_t start, end;
 
@@ -139,7 +139,7 @@ void *find_primes(void *t) {
 	/* Mark composites within calculated range */
 	int work_done = 0;
 	int prime_count = 0;
-	long myid = (long) t;
+	int myid = (int) t;
 	unsigned int i,j;
 	unsigned int min = floor(myid * (max_prime + 1) / num_workers);
 	unsigned int max = floor((myid + 1) * ((max_prime + 1) / num_workers)) - 1;
@@ -179,7 +179,6 @@ void usage() {
 	printf("%s  %s", "Usage:\n",
 			"primePThread [-qv] [-m max_prime] [-c concurrency]\n\n");
 	printf("%s", "Options:\n");
-	printf("%*s%*s\n", 4, "-q", 29, "don't print prime numbers");
 	printf("%*s%*s\n", 4, "-v", 23, "verbose: print timing and count");
 	printf("%*s%*s\n", 4, "-m", 36, "maximum size of the prime number");
 	printf("%*s%*s\n", 4, "-c", 23, "concurrency to use\n");
