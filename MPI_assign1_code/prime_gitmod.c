@@ -161,7 +161,7 @@ void *find_primes(void *t) {
 		work_done = work_done + 1;
   }
 	if (verbose == TRUE)
-		printf ("thread %lu   min: %d  max: %d  count: %d   work: %d\n", myid, min, max, mycount, work_done);
+		printf ("thread %lu   min: %d  max: %d  count: %d   work: %d\n", myid, min, max, prime_count, work_done);
 	pthread_exit(NULL);
 	return 0;
 }
