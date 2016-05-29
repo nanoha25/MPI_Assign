@@ -25,19 +25,16 @@
 
 void* find_primes(void *t);
 void perror_and_exit(char *msg);
-int count_primes();
 void usage();
 
 /****************************************************************/
 /*              Macros and typedefs                      		*/
 /****************************************************************/
 typedef enum { FALSE, TRUE } Boolean;
-#define INT_BIT 32
 
 /****************************************************************/
 /*              Global variables                                */
 /****************************************************************/
-unsigned int *arr;
 unsigned int num_workers;
 unsigned int max_prime;
 unsigned int prime_count;
@@ -48,7 +45,6 @@ Boolean verbose = FALSE; // if TRUE, show timings and count
 /*              Function definitions                            */
 /****************************************************************/
 int main(int argc, char **argv) {
-	unsigned int i, j = 0;
 	int c;
 	unsigned int t = 0;
 	double seconds;
@@ -80,9 +76,6 @@ int main(int argc, char **argv) {
 	if (verbose == TRUE)
 		time(&start);
 
-	/* Allocate memory for the bit array */
-	unsigned int size = ceil((max_prime - 1) / INT_BIT)+1;
-	arr = malloc(size * (sizeof(unsigned int)));
 
 	/* Allocate the number of pthreads given by num_workers */
 	pthread_t *threads = (pthread_t*) malloc(num_workers * sizeof(pthread_t));
@@ -129,13 +122,12 @@ int main(int argc, char **argv) {
 		perror_and_exit("Error destroying pthread attr.\n");
 	if (pthread_mutex_destroy(&mtx) != 0)
 		perror_and_exit("Error destroying mutex.\n");
-	free(arr);
 	free(threads);
 	pthread_exit(NULL);
 	return 0;
 }
 
-void *find_primes(void *t) {
+void *find_primes(int *t) {
 	/* Mark composites within calculated range */
 	int work_done = 0;
 	int prime_count = 0;
