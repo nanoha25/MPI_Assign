@@ -7,8 +7,6 @@
  * Rebecca Sagalyn
  */
 
-#define _POSIX_SOURCE
-#define _BSD_SOURCE
 #include <errno.h>
 #include <fcntl.h>
 #include <getopt.h>
@@ -23,12 +21,9 @@
 #include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
-#include <stdbool.h>	/* for debug functions */
 
-unsigned int next_prime(unsigned int cur_seed);
+
 void* find_primes(void *t);
-void print_primes(unsigned int n);
-void printbits(unsigned int arr[], int i);
 void perror_and_exit(char *msg);
 int count_primes();
 void usage();
@@ -37,7 +32,7 @@ void usage();
 /*              Macros and typedefs                      		*/
 /****************************************************************/
 typedef enum { FALSE, TRUE } Boolean;
-
+#define INT_BIT 32
 
 /****************************************************************/
 /*              Global variables                                */
@@ -145,7 +140,7 @@ void *find_primes(void *t) {
 	int work_done = 0;
 	int prime_count = 0;
 	long myid = (long) t;
-	unsigned int j,k;
+	unsigned int i,j;
 	unsigned int min = floor(myid * (max_prime + 1) / num_workers);
 	unsigned int max = floor((myid + 1) * ((max_prime + 1) / num_workers)) - 1;
 	for (i=min; i<=max; i++)  //This for loop will go through all numbers between 2 and max number defined by user.
