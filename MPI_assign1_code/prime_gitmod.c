@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
 
 	/* Allocate memory for the bit array */
 	unsigned int size = ceil((max_prime - 1) / INT_BIT)+1;
-	bit_arr = malloc(size * (sizeof(unsigned int)));
+	arr = malloc(size * (sizeof(unsigned int)));
 
 	/* Allocate the number of pthreads given by num_workers */
 	pthread_t *threads = (pthread_t*) malloc(num_workers * sizeof(pthread_t));
