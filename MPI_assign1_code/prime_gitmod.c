@@ -47,7 +47,7 @@ Boolean verbose = FALSE; // if TRUE, show timings and count
 int main(int argc, char **argv) {
 	int i = 0;
 	int c;
-	int t = 1;
+	int t = 0;
 	double seconds;
 	time_t start, end;
 
