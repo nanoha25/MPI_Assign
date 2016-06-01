@@ -47,7 +47,7 @@ Boolean verbose = FALSE; // if TRUE, show timings and count
 int main(int argc, char **argv) {
 	int i = 0;
 	int c;
-	int t = 0;
+	int t = 1;
 	double seconds;
 	time_t start, end;
 
@@ -80,7 +80,6 @@ int main(int argc, char **argv) {
 
 	/* Allocate the number of pthreads given by num_workers */
 	pthread_t *threads = (pthread_t*) malloc(num_workers * sizeof(pthread_t));
-
 
 
 	/* Initialize mutex object */
@@ -135,24 +134,30 @@ void *find_primes(int *t) {
 	int myid = (int) t;
 	int i,j;
 	int min = floor(myid * (max_prime + 1) / num_workers);
+	printf("min = %d",min);
 	int max = floor((myid + 1) * ((max_prime + 1) / num_workers)) - 1;
-	for (i=min; i<=max; i++)  //This for loop will go through all numbers between 2 and max number defined by user.
-  {
-    for (j=min; j<=i; j++)  //This for loop will determine if current number has more than 2 factors (1 and itself).
-    {
-      if (i%j==0)  //This line is the determine condition. It uses module division.
-      {
-        break;  //If condition is true then program jumps out of INNER for loop. Not the ENTIRE for loop.
-      }
-			prime_count = prime_count + 1;
-    }
-    if (i==j)  //This condition is to include the number itself, because in previous "if" condition, say we are at number 7, and "7%7==0" is true. This defeats the purpose of finding prime number.
-    {
-      prime_count = prime_count + 1;
-			printf("%d",i);
-    }
-		work_done = work_done + 1;
-  }
+	printf("max = %d",max);
+	if (min>=2)
+	{
+		for (i=min; i<=max; i++)  //This for loop will go through all numbers between 2 and max number defined by user.
+	  {
+	    for (j=min; j<=i; j++)  //This for loop will determine if current number has more than 2 factors (1 and itself).
+	    {
+	      if (i%j==0)  //This line is the determine condition. It uses module division.
+	      {
+	        break;  //If condition is true then program jumps out of INNER for loop. Not the ENTIRE for loop.
+	      }
+				prime_count = prime_count + 1;
+	    }
+	    if (i==j)  //This condition is to include the number itself, because in previous "if" condition, say we are at number 7, and "7%7==0" is true. This defeats the purpose of finding prime number.
+	    {
+	      prime_count = prime_count + 1;
+				printf("%d",i);
+	    }
+			work_done = work_done + 1;
+	  }
+	}
+
 	if (verbose == TRUE)
 		printf ("thread %d   min: %d  max: %d  count: %d   work: %d\n", myid, min, max, prime_count, work_done);
 	pthread_exit(NULL);
