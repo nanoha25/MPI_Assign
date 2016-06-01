@@ -134,9 +134,9 @@ void *find_primes(int *t) {
 	int myid = (int) t;
 	int i,j;
 	int min = floor(myid * (max_prime + 1) / num_workers);
-	printf("min = %d",min);
+	printf("min = %d\n",min);
 	int max = floor((myid + 1) * ((max_prime + 1) / num_workers)) - 1;
-	printf("max = %d",max);
+	printf("max = %d\n",max);
 	if (min>=2)
 	{
 		for (i=min; i<=max; i++)  //This for loop will go through all numbers between 2 and max number defined by user.
@@ -159,7 +159,7 @@ void *find_primes(int *t) {
 	}
 
 	if (verbose == TRUE)
-		printf ("thread %d   min: %d  max: %d  count: %d   work: %d\n", myid, min, max, prime_count, work_done);
+		printf ("\nthread %d   min: %d  max: %d  count: %d   work: %d\n", myid, min, max, prime_count, work_done);
 	pthread_exit(NULL);
 	return 0;
 }
