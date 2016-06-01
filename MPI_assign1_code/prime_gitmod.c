@@ -35,9 +35,9 @@ typedef enum { FALSE, TRUE } Boolean;
 /****************************************************************/
 /*              Global variables                                */
 /****************************************************************/
-unsigned int num_workers;
-unsigned int max_prime;
-unsigned int prime_count;
+int num_workers;
+int max_prime;
+int prime_count;
 pthread_mutex_t mtx;
 Boolean verbose = FALSE; // if TRUE, show timings and count
 
@@ -45,9 +45,9 @@ Boolean verbose = FALSE; // if TRUE, show timings and count
 /*              Function definitions                            */
 /****************************************************************/
 int main(int argc, char **argv) {
-	unsigned int i = 0;
+	int i = 0;
 	int c;
-	unsigned int t = 0;
+	int t = 0;
 	double seconds;
 	time_t start, end;
 
@@ -133,9 +133,9 @@ void *find_primes(int *t) {
 	int work_done = 0;
 	int prime_count = 0;
 	int myid = (int) t;
-	unsigned int i,j;
-	unsigned int min = floor(myid * (max_prime + 1) / num_workers);
-	unsigned int max = floor((myid + 1) * ((max_prime + 1) / num_workers)) - 1;
+	int i,j;
+	int min = floor(myid * (max_prime + 1) / num_workers);
+	int max = floor((myid + 1) * ((max_prime + 1) / num_workers)) - 1;
 	for (i=min; i<=max; i++)  //This for loop will go through all numbers between 2 and max number defined by user.
   {
     for (j=min; j<=i; j++)  //This for loop will determine if current number has more than 2 factors (1 and itself).
