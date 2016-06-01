@@ -23,7 +23,7 @@
 #include <unistd.h>
 
 
-void* find_primes(int *t);
+int* find_primes(int *t);
 void perror_and_exit(char *msg);
 void usage();
 
