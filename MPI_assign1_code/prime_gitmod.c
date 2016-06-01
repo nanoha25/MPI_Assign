@@ -148,12 +148,12 @@ void *find_primes(int *t) {
 					printf("break here.\n");
 	        break;  //If condition is true then program jumps out of INNER for loop. Not the ENTIRE for loop.
 	      }
-				printf("found a prime.\n\n", );
+				printf("found a prime.\n\n");
 				prime_count = prime_count + 1;
 	    }
 	    if (i==j)  //This condition is to include the number itself, because in previous "if" condition, say we are at number 7, and "7%7==0" is true. This defeats the purpose of finding prime number.
 	    {
-				printf("found another prime.\n\n", );
+				printf("found another prime.\n\n");
 	      prime_count = prime_count + 1;
 				printf("%d",i);
 	    }
