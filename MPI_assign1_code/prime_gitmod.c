@@ -127,7 +127,7 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
-void *find_primes(int *t) {
+int *find_primes(int *t) {
 	/* Mark composites within calculated range */
 	int work_done = 0;
 	int prime_count = 0;
@@ -164,7 +164,7 @@ void *find_primes(int *t) {
 	if (verbose == TRUE)
 		printf ("\nthread %d   min: %d  max: %d  count: %d   work: %d\n", myid, min, max, prime_count, work_done);
 	pthread_exit(NULL);
-	return 0;
+	return prime_count;
 }
 
 
