@@ -61,7 +61,9 @@ int main(int argc, char *argv[])
 
 	for(t=0;t<NUM_THREADS;t++) {
 		thread_data_array[t].thread_id = t;
+		//"thread_data_array[t]" is created with type "thread_data". And type "thread_data" is a structure type. Thus, "thread_data_array[t].thread_id" means accessing "thread_id" field in "thread_data_array[t]". The right part of code assigns the value to a new variable "t".
 		thread_data_array[t].message = messages[t];
+		//Similar to previous one, "thread_data_array[t].message" means accessing "message" field in "thread_data_array[t]", which is actually a structure type array.
 		printf("Creating thread %d\n", t);
 		rc = pthread_create(&threads[t], NULL, PrintHello, (void *)
 		 &thread_data_array[t]);

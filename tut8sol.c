@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 {
 	int i, n, n_threads;
 	int k, nq, nr;
-	struct thrd_data *t_arg;
+	struct thrd_data *t_arg;   //This line creates a pointer "t_arg" to structure "thrd_data".
 	pthread_t *thread_id;
 	pthread_attr_t attr;
 
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
 	End of "This part"
 	*/
 
-	
+
 	/* create arrays of thread ids and thread args */
 	thread_id = (pthread_t *)malloc(sizeof(pthread_t)*n_threads);
 	t_arg = (struct thrd_data *)malloc(sizeof(struct thrd_data)*n_threads);
@@ -93,12 +93,12 @@ int main(int argc, char *argv[])
 	k = 1;
 	for (i=0; i<n_threads; i++){
     t_arg[i].id = i;
-	t_arg[i].start = k;
-	if (i < nr)
-		k = k + nq + 1;
-	else
-		k = k + nq;
-	t_arg[i].end = k;
+	 t_arg[i].start = k;
+	 if (i < nr)
+	   	k = k + nq + 1;
+	 else
+		  k = k + nq;
+   t_arg[i].end = k;
     pthread_create(&thread_id[i], &attr, do_work, (void *) &t_arg[i]);
 }
 
