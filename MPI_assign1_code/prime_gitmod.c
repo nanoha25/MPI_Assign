@@ -148,14 +148,18 @@ int *find_primes(int *t) {
 					printf("break here.\n");
 	        break;  //If condition is true then program jumps out of INNER for loop. Not the ENTIRE for loop.
 	      }
+				pthread_mutex_lock(&mtx);
 				printf("found a prime.\n\n");
 				prime_count = prime_count + 1;
+				pthread_mutex_unlock(&mtx);
 	    }
 	    if (i==j)  //This condition is to include the number itself, because in previous "if" condition, say we are at number 7, and "7%7==0" is true. This defeats the purpose of finding prime number.
 	    {
+				pthread_mutex_lock(&mtx);
 				printf("found another prime.\n\n");
 	      prime_count = prime_count + 1;
 				printf("%d",i);
+				pthread_mutex_unlock(&mtx);
 	    }
 			work_done = work_done + 1;
 	  }
