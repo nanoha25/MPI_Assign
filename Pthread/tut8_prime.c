@@ -19,7 +19,7 @@ pthread_mutex_t count_mtx; /* global mutex */
 void *do_work(void *thrd_arg)
 {
 	struct thrd_data *t_data;  //Here, we create a pointer variable (a variable storing address of another variable, likely the direct address of the memory location) with type "thrd_data".
-	int i,min, max;
+	int i,j,min, max;
 	int myid;
   int mycount = 0;
 
@@ -40,38 +40,26 @@ void *do_work(void *thrd_arg)
   {
     for (i=8;i<max;i++)
     {
-      if (i%2!=0)
+      for (j=8; j<=i; j++)  //This for loop will determine if current number has more than 2 factors (1 and itself).
       {
-        //program runs to here, there should be a found prime.
-        printf("\nFound a prime: %d\n",i);
+        if (i%j==0)  //This line is the determine condition. It uses module division.
+        {
+          break;  //If condition is true then program jumps out of INNER for loop. Not the ENTIRE for loop.
+        }
+        else
+        {
+          printf("%d is a prime number.\n",i);
+          mycount = mycount + 1;
+        }
+      }
+      if (i==j)  //This condition is to include the number itself, because in previous "if" condition, say we are at number 7, and "7%7==0" is true. This defeats the purpose of finding prime number.
+      {
+        printf("%d is a prime number.\n",i);
         mycount = mycount + 1;
       }
-      else if (i%3!=0)
-      {
-        //program runs to here, there should be a found prime.
-        printf("\nFound a prime: %d\n",i);
-        mycount = mycount + 1;
-      }
-      else if (i%5!=0)
-      {
-        //program runs to here, there should be a found prime.
-        printf("\nFound a prime: %d\n",i);
-        mycount = mycount + 1;
-      }
-      else if (i%7!=0)
-      {
-        //program runs to here, there should be a found prime.
-        printf("\nFound a prime: %d\n",i);
-        mycount = mycount + 1;
-      }
-      else
-      {
-        printf("\nNot a prime: %d\n",i);
-      }
-      i++;
     }
     pthread_mutex_lock (&count_mtx);
-    count = count + mycount + 4; //Here adds 4 because there are already 4 prime numbers. This "4" can also be added at the end of program.
+    count = count + mycount;
     pthread_mutex_unlock (&count_mtx);
 
     /*Quit thread. */
@@ -79,37 +67,26 @@ void *do_work(void *thrd_arg)
   }
   else
   {
-    for (i=min;i<max;i++)
-    {
-      if (i%2!=0)
+      for (i=min;i<max;i++)
       {
-        //program runs to here, there should be a found prime.
-        printf("\nFound a prime: %d\n",i);
-        mycount = mycount + 1;
+        for (j=min; j<=i; j++)  //This for loop will determine if current number has more than 2 factors (1 and itself).
+        {
+          if (i%j==0)  //This line is the determine condition. It uses module division.
+          {
+            break;  //If condition is true then program jumps out of INNER for loop. Not the ENTIRE for loop. (The number is not prime. )
+          }
+          else
+          {
+            printf("%d is a prime number.\n",i);
+            mycount = mycount + 1;
+          }
+        }
+        if (i==j)  //This condition is to include the number itself, because in previous "if" condition, say we are at number 7, and "7%7==0" is true. This defeats the purpose of finding prime number.
+        {
+          printf("%d is a prime number.\n",i);
+          mycount = mycount + 1;
+        }
       }
-      else if (i%3!=0)
-      {
-        //program runs to here, there should be a found prime.
-        printf("\nFound a prime: %d\n",i);
-        mycount = mycount + 1;
-      }
-      else if (i%5!=0)
-      {
-        //program runs to here, there should be a found prime.
-        printf("\nFound a prime: %d\n",i);
-        mycount = mycount + 1;
-      }
-      else if (i%7!=0)
-      {
-        //program runs to here, there should be a found prime.
-        printf("\nFound a prime: %d\n",i);
-        mycount = mycount + 1;
-      }
-      else
-      {
-        printf("\nNot a prime: %d\n",i);
-      }
-        i++;
     }
     /*
     Here, thread locks mutex, update global prime count, then unlock
