@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 
-
 struct thrd_data{
 	int id;
 	int start;
@@ -13,7 +12,7 @@ struct thrd_data{
 Again, till here we have created a structure, with three int type members.
 */
 
-double  sum=0.0; /* global variable */
+int count = 0;  /* global variable */
 pthread_mutex_t count_mtx; /* global mutex */
 
 
@@ -22,7 +21,6 @@ void *do_work(void *thrd_arg)
 	struct thrd_data *t_data;  //Here, we create a pointer variable (a variable storing address of another variable, likely the direct address of the memory location) with type "thrd_data".
 	int i,min, max;
 	int myid;
-	int count = 0;
   int mycount = 0;
 
 	/* Initialize my part of the global array and keep local sum */
@@ -37,7 +35,7 @@ void *do_work(void *thrd_arg)
 	max = t_data->end;
 	//This line is used to access the member "end" in structure "thrd_data" using a pointer to that structure.
 
-	printf ("Thread %d finding prime from %d to %d\n", myid,start,end-1);
+	printf ("Thread %d finding prime from %d to %d\n", myid,min,max-1);
 	if (myid==0)
   {
     for (i=8;i<max;i++)
@@ -129,7 +127,7 @@ int main(int argc, char *argv[])
 
 	/* Pthreads setup: initialize mutex and explicitly create */
 	/* threads in a joinable state (for portability)  */
-	pthread_mutex_init(&sum_mutex, NULL);
+	pthread_mutex_init(&count_mtx, NULL);
 	pthread_attr_init(&attr);
 	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
@@ -177,6 +175,6 @@ int main(int argc, char *argv[])
 
 	/* Clean up and exit */
 	pthread_attr_destroy(&attr);
-	pthread_mutex_destroy(&sum_mutex);
+	pthread_mutex_destroy(&count_mtx);
 	pthread_exit (NULL);
 }
