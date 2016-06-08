@@ -42,31 +42,37 @@ void *do_work(void *thrd_arg)
     {
       if (i%2==0)
       {
-        printf("%d Not a prime (2)",i);
-        i++;
+        printf("\n%d Not a prime (2)\n",i);
+
+        break;
       }
       else if (i%3==0)
       {
-        printf("%d Not a prime (3)",i);
-        i++;
+        printf("\n%d Not a prime (3)\n",i);
+
+        break;
       }
       else if (i%5==0)
       {
-        printf("%d Not a prime (5)",i);
-        i++;
+        printf("\n%d Not a prime (5)\n",i);
+
+        break;
       }
       else if (i%7==0)
       {
-        printf("%d Not a prime (7)",i);
-        i++;
+        printf("\n%d Not a prime (7)\n",i);
+
+        break;
       }
       else
       {
         //program runs to here, there should be a found prime.
-        printf("Found a prime: %d",i);
+        printf("\nFound a prime: %d\n",i);
         mycount = mycount + 1;
-        i++;
+
+        break;
       }
+      i++; 
     }
     pthread_mutex_lock (&count_mtx);
     count = count + mycount + 4; //Here adds 4 because there are already 4 prime numbers. This "4" can also be added at the end of program.
@@ -81,30 +87,31 @@ void *do_work(void *thrd_arg)
     {
       if (i%2==0)
       {
-        printf("%d Not a prime (2)",i);
-        i++;
+        printf("\n%d Not a prime (2)\n",i);
+        break;
       }
       else if (i%3==0)
       {
-        printf("%d Not a prime (3)",i);
-        i++;
+        printf("\n%d Not a prime (3)\n",i);
+        break;
       }
       else if (i%5==0)
       {
-        printf("%d Not a prime (5)",i);
-        i++;
+        printf("\n%d Not a prime (5)\n",i);
+        break;
       }
       else if (i%7==0)
       {
-        printf("%d Not a prime (7)",i);
-        i++;
+        printf("\n%d Not a prime (7)\n",i);
+        break;
       }
       else
       {
-        printf("Found a prime: %d",i);
+        printf("\nFound a prime: %d\n",i);
         mycount = mycount + 1;
-        i++;
+        break;
       }
+      i++;
     }
     /*
     Here, thread locks mutex, update global prime count, then unlock
