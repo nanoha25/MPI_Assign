@@ -1,10 +1,8 @@
-/******************************************************************************
-* The exercise is to add a range of natural integer numbers from 1 to n
-*   using a number of threads.
-******************************************************************************/
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+
 
 struct thrd_data{
 	int id;
@@ -22,9 +20,10 @@ pthread_mutex_t count_mtx; /* global mutex */
 void *do_work(void *thrd_arg)
 {
 	struct thrd_data *t_data;  //Here, we create a pointer variable (a variable storing address of another variable, likely the direct address of the memory location) with type "thrd_data".
-	int i,start, end;
+	int i,min, max;
 	int myid;
 	int count = 0;
+  int mycount = 0;
 
 	/* Initialize my part of the global array and keep local sum */
 	t_data = (struct thrd_data *) thrd_arg;
@@ -39,7 +38,7 @@ void *do_work(void *thrd_arg)
 	//This line is used to access the member "end" in structure "thrd_data" using a pointer to that structure.
 
 	printf ("Thread %d finding prime from %d to %d\n", myid,start,end-1);
-	if (thread_id==0)
+	if (myid==0)
   {
     for (i=8;i<max;i++)
     {
