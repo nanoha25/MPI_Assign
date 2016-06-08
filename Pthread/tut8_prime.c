@@ -43,28 +43,29 @@ void *do_work(void *thrd_arg)
       if (i%2==0)
       {
         printf("%d Not a prime (2)",i);
-        break;
+        i++;
       }
       else if (i%3==0)
       {
         printf("%d Not a prime (3)",i);
-        break;
+        i++;
       }
       else if (i%5==0)
       {
         printf("%d Not a prime (5)",i);
-        break;
+        i++;
       }
       else if (i%7==0)
       {
         printf("%d Not a prime (7)",i);
-        break;
+        i++;
       }
       else
       {
         //program runs to here, there should be a found prime.
         printf("Found a prime: %d",i);
         mycount = mycount + 1;
+        i++;
       }
     }
     pthread_mutex_lock (&count_mtx);
@@ -81,27 +82,28 @@ void *do_work(void *thrd_arg)
       if (i%2==0)
       {
         printf("%d Not a prime (2)",i);
-        break;
+        i++;
       }
       else if (i%3==0)
       {
         printf("%d Not a prime (3)",i);
-        break;
+        i++;
       }
       else if (i%5==0)
       {
         printf("%d Not a prime (5)",i);
-        break;
+        i++;
       }
       else if (i%7==0)
       {
         printf("%d Not a prime (7)",i);
-        break;
+        i++;
       }
       else
       {
         printf("Found a prime: %d",i);
         mycount = mycount + 1;
+        i++;
       }
     }
     /*
