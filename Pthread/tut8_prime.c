@@ -44,7 +44,7 @@ void *do_work(void *thrd_arg)
       {
         printf("\n%d Not a prime (2)\n",i);
 
-        
+
       }
       else if (i%3==0)
       {
@@ -179,7 +179,7 @@ int main(int argc, char *argv[])
 	for (i=0; i<n_threads; i++) {
 		pthread_join(thread_id[i], NULL);
 	}
-	printf ("Done. Count= %e \n", count);
+	printf ("Done. Count= %d \n", count);
 
 
 	/* Clean up and exit */
