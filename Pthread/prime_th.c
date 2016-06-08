@@ -15,15 +15,33 @@
 #include <time.h>
 #include <unistd.h>
 #include <stdbool.h>	/* for debug functions */
-//create a mutex for counting primes.
-  int i,j,k,m; //These should be global variables.
 
-int *find_prime(void *threadarg)
+//First create all required variables as global variables. Then gradually move some of them into different method to increase safety. This step can be ignored, however.
+int i,j,k,m; //These are for counting/numbers/buffer/temp stuff.
+int n_thrd; //number of threads
+pthread_mutex_t count_mtx; /*global mutex*/
+
+struct thrd_data  //This structure is used to store necessary data for counting.
 {
-  int min, max;
-  int thread_id;
+  int id;
+  int min;
+  int max; /*the sub-range is from start to end-1*/
+}
+
+
+void *find_prime(void *threadarg)
+{
+  struct thrd_data *t_data;
+  int i, min, max;
+  int myid;
+  int count = 0;
 
   sleep(1);
+
+  t_data = (struct thrd_data *) thrd_arg;
+  myid = t_data->id;
+  min = t_data->min;
+  max = t_data->max;
 
   if (thread_id==0)
   {
@@ -59,6 +77,9 @@ int *find_prime(void *threadarg)
     pthread_mutex_lock (&count_mtx);
     count = count + mycount + 4; //Here adds 4 because there are already 4 prime numbers. This "4" can also be added at the end of program.
     pthread_mutex_unlock (&count_mtx);
+
+    /*Quit thread. */
+    pthread_exit(NULL);
   }
   else
   {
@@ -102,5 +123,21 @@ int *find_prime(void *threadarg)
   }
 
 
+}
+
+int main(int argc, char *argv[])
+{
+  struct thrd_data *t_arg;
+  pthread_t *thread_id;
+  pthread_attr_t attr;
+
+  /*Pthread setup: Initialize mutex and explicitly create threads in a joinable state, for portability */
+  pthread_mutex_init(&count_mtx, NULL);
+  pthread_attr_init(&attr);
+  pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+
+  /* Ask user for input arguments */
+  printf("Please enter a number: ");
+  scanf ("%d", &)
 
 }
