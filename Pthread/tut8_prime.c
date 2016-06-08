@@ -40,37 +40,33 @@ void *do_work(void *thrd_arg)
   {
     for (i=8;i<max;i++)
     {
-      if (i%2==0)
-      {
-        printf("\n%d Not a prime (2)\n",i);
-
-
-      }
-      else if (i%3==0)
-      {
-        printf("\n%d Not a prime (3)\n",i);
-
-
-      }
-      else if (i%5==0)
-      {
-        printf("\n%d Not a prime (5)\n",i);
-
-
-      }
-      else if (i%7==0)
-      {
-        printf("\n%d Not a prime (7)\n",i);
-
-
-      }
-      else
+      if (i%2!=0)
       {
         //program runs to here, there should be a found prime.
         printf("\nFound a prime: %d\n",i);
         mycount = mycount + 1;
-
-
+      }
+      else if (i%3!=0)
+      {
+        //program runs to here, there should be a found prime.
+        printf("\nFound a prime: %d\n",i);
+        mycount = mycount + 1;
+      }
+      else if (i%5!=0)
+      {
+        //program runs to here, there should be a found prime.
+        printf("\nFound a prime: %d\n",i);
+        mycount = mycount + 1;
+      }
+      else if (i%7!=0)
+      {
+        //program runs to here, there should be a found prime.
+        printf("\nFound a prime: %d\n",i);
+        mycount = mycount + 1;
+      }
+      else
+      {
+        printf("\nNot a prime: %d\n",i);
       }
       i++;
     }
@@ -83,34 +79,34 @@ void *do_work(void *thrd_arg)
   }
   else
   {
-    for (i=min;i<max;i++)
+    if (i%2!=0)
     {
-      if (i%2==0)
-      {
-        printf("\n%d Not a prime (2)\n",i);
-
-      }
-      else if (i%3==0)
-      {
-        printf("\n%d Not a prime (3)\n",i);
-
-      }
-      else if (i%5==0)
-      {
-        printf("\n%d Not a prime (5)\n",i);
-
-      }
-      else if (i%7==0)
-      {
-        printf("\n%d Not a prime (7)\n",i);
-
-      }
-      else
-      {
-        printf("\nFound a prime: %d\n",i);
-        mycount = mycount + 1;
-
-      }
+      //program runs to here, there should be a found prime.
+      printf("\nFound a prime: %d\n",i);
+      mycount = mycount + 1;
+    }
+    else if (i%3!=0)
+    {
+      //program runs to here, there should be a found prime.
+      printf("\nFound a prime: %d\n",i);
+      mycount = mycount + 1;
+    }
+    else if (i%5!=0)
+    {
+      //program runs to here, there should be a found prime.
+      printf("\nFound a prime: %d\n",i);
+      mycount = mycount + 1;
+    }
+    else if (i%7!=0)
+    {
+      //program runs to here, there should be a found prime.
+      printf("\nFound a prime: %d\n",i);
+      mycount = mycount + 1;
+    }
+    else
+    {
+      printf("\nNot a prime: %d\n",i);
+    }
       i++;
     }
     /*
