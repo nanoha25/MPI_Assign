@@ -79,35 +79,37 @@ void *do_work(void *thrd_arg)
   }
   else
   {
-    if (i%2!=0)
+    for (i=min;i<max;i++)
     {
-      //program runs to here, there should be a found prime.
-      printf("\nFound a prime: %d\n",i);
-      mycount = mycount + 1;
-    }
-    else if (i%3!=0)
-    {
-      //program runs to here, there should be a found prime.
-      printf("\nFound a prime: %d\n",i);
-      mycount = mycount + 1;
-    }
-    else if (i%5!=0)
-    {
-      //program runs to here, there should be a found prime.
-      printf("\nFound a prime: %d\n",i);
-      mycount = mycount + 1;
-    }
-    else if (i%7!=0)
-    {
-      //program runs to here, there should be a found prime.
-      printf("\nFound a prime: %d\n",i);
-      mycount = mycount + 1;
-    }
-    else
-    {
-      printf("\nNot a prime: %d\n",i);
-    }
-      i++;
+      if (i%2!=0)
+      {
+        //program runs to here, there should be a found prime.
+        printf("\nFound a prime: %d\n",i);
+        mycount = mycount + 1;
+      }
+      else if (i%3!=0)
+      {
+        //program runs to here, there should be a found prime.
+        printf("\nFound a prime: %d\n",i);
+        mycount = mycount + 1;
+      }
+      else if (i%5!=0)
+      {
+        //program runs to here, there should be a found prime.
+        printf("\nFound a prime: %d\n",i);
+        mycount = mycount + 1;
+      }
+      else if (i%7!=0)
+      {
+        //program runs to here, there should be a found prime.
+        printf("\nFound a prime: %d\n",i);
+        mycount = mycount + 1;
+      }
+      else
+      {
+        printf("\nNot a prime: %d\n",i);
+      }
+        i++;
     }
     /*
     Here, thread locks mutex, update global prime count, then unlock
