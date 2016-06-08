@@ -98,7 +98,7 @@ void *do_work(void *thrd_arg)
     /*Quit thread. */
     pthread_exit(NULL);
   }
-}
+
 
 
 int main(int argc, char *argv[])
