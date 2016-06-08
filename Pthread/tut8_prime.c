@@ -44,25 +44,25 @@ void *do_work(void *thrd_arg)
       {
         printf("\n%d Not a prime (2)\n",i);
 
-        break;
+        
       }
       else if (i%3==0)
       {
         printf("\n%d Not a prime (3)\n",i);
 
-        break;
+
       }
       else if (i%5==0)
       {
         printf("\n%d Not a prime (5)\n",i);
 
-        break;
+
       }
       else if (i%7==0)
       {
         printf("\n%d Not a prime (7)\n",i);
 
-        break;
+
       }
       else
       {
@@ -70,9 +70,9 @@ void *do_work(void *thrd_arg)
         printf("\nFound a prime: %d\n",i);
         mycount = mycount + 1;
 
-        break;
+
       }
-      i++; 
+      i++;
     }
     pthread_mutex_lock (&count_mtx);
     count = count + mycount + 4; //Here adds 4 because there are already 4 prime numbers. This "4" can also be added at the end of program.
@@ -88,28 +88,28 @@ void *do_work(void *thrd_arg)
       if (i%2==0)
       {
         printf("\n%d Not a prime (2)\n",i);
-        break;
+
       }
       else if (i%3==0)
       {
         printf("\n%d Not a prime (3)\n",i);
-        break;
+
       }
       else if (i%5==0)
       {
         printf("\n%d Not a prime (5)\n",i);
-        break;
+
       }
       else if (i%7==0)
       {
         printf("\n%d Not a prime (7)\n",i);
-        break;
+
       }
       else
       {
         printf("\nFound a prime: %d\n",i);
         mycount = mycount + 1;
-        break;
+
       }
       i++;
     }
