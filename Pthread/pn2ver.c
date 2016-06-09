@@ -25,6 +25,19 @@ void *do_work(void *thrd_arg)
 	int myid;
   int mycount = 0;
 
+	/*initialize an array full of boolean values.*/
+
+	int *primes;
+	int c;
+	int z = 1;
+
+	primes = malloc(sizeof(int)*max);
+
+	/*mark all numbers as prime*/
+	for (c=0; c<max; c++)
+	{
+		primes[c]=TRUE;
+	}
 
 	/* Initialize my part of the global array and keep local sum */
 	t_data = (struct thrd_data *) thrd_arg;
@@ -43,23 +56,17 @@ void *do_work(void *thrd_arg)
   {
     for (i=2;i<max;i++)
     {
-			for (j=2;j<=floor(sqrt(i));j++)
+			if(primes[i])
 			{
-				if (i/j!=0)
-	      {
-					//program runs to here, there should be a found prime.
-	        printf("\n|Found a prime: %d\n",i);
-	        mycount = mycount + 1;
-	      }
-				else
-	      {
-	        printf("\n%d Not a prime.\n",i);
-	      }
+				for (j=i;i*j<max;j++)
+				{
+					primes[i*j]=FALSE;
+					count = count + 1;
+				}
 			}
-
     }
     pthread_mutex_lock (&count_mtx);
-    count = count + mycount; //Here adds 4 because there are already 4 prime numbers. This "4" can also be added at the end of program.
+    count = count + mycount; //This count was to count prime numbers. Now it counts non-prime numbers.
     pthread_mutex_unlock (&count_mtx);
 
     /*Quit thread. */
@@ -69,26 +76,20 @@ void *do_work(void *thrd_arg)
   {
 		for (i=min;i<max;i++)
 		{
-			for (j=min;j<=floor(sqrt(i));j++)
+			if(primes[i])
 			{
-				if (i%j!=0)
+				for (j=i;i*j<max;j++)
 				{
-					//program runs to here, there should be a found prime.
-					printf("\n|Found a prime: %d\n",i);
-					mycount = mycount + 1;
-				}
-				else
-				{
-					printf("\n%d Not a prime.\n",i);
+					primes[i*j]=FALSE;
+					count = count + 1;
 				}
 			}
-
     }
     /*
     Here, thread locks mutex, update global prime count, then unlock
     */
     pthread_mutex_lock (&count_mtx);
-    count = count + mycount;
+    count = count + mycount;  //Again, this count was to count prime numebers. Now it counts non-prime numbers.
     pthread_mutex_unlock (&count_mtx);
 
     /*Quit thread. */
@@ -125,9 +126,6 @@ int main(int argc, char *argv[])
 	End of "This part"
 	*/
 
-	/*initialize an array full of boolean values.*/
-	int array[n];
-
 	/* create arrays of thread ids and thread args */
 	thread_id = (pthread_t *)malloc(sizeof(pthread_t)*n_threads);
 	t_arg = (struct thrd_data *)malloc(sizeof(struct thrd_data)*n_threads);
@@ -152,7 +150,7 @@ int main(int argc, char *argv[])
 	for (i=0; i<n_threads; i++) {
 		pthread_join(thread_id[i], NULL);
 	}
-	printf ("Done. Count= %d \n", count);
+	printf ("Done. Count= %d \n", n-count);
 
 
 	/* Clean up and exit */
