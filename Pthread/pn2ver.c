@@ -62,7 +62,7 @@ void *do_work(void *thrd_arg)
 				for (j=i;i*j<max;j++)
 				{
 					primes[i*j]=0;
-					printf("%d is not prime",primes[i*j]);
+					printf("%d is not prime. i*j=%d\n",primes[i*j],i*j);
 					mycount = mycount + 1;
 				}
 			}
@@ -83,7 +83,7 @@ void *do_work(void *thrd_arg)
 				for (j=i;i*j<max;j++)
 				{
 					primes[i*j]=0;
-					printf("%d is not prime",primes[i*j]);					
+					printf("%d is not prime. i*j=%d\n",primes[i*j],i*j);
 					mycount = mycount + 1;
 				}
 			}
