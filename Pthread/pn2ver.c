@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+typedef enum { FALSE, TRUE } Boolean;
 
 struct thrd_data{
 	int id;
@@ -24,6 +25,7 @@ void *do_work(void *thrd_arg)
 	int myid;
   int mycount = 0;
 
+
 	/* Initialize my part of the global array and keep local sum */
 	t_data = (struct thrd_data *) thrd_arg;
 	//This line creates a variable "t_data" based on structure "thrd_data".
@@ -39,11 +41,11 @@ void *do_work(void *thrd_arg)
 	printf ("Thread %d finding prime from %d to %d\n", myid,min,max-1);
 	if (myid==0)
   {
-    for (i=8;i<max;i++)
+    for (i=2;i<max;i++)
     {
-			for (j=8;j<=floor(sqrt(i));j++)
+			for (j=2;j<=floor(sqrt(i));j++)
 			{
-				if (i%j!=0)
+				if (i/j!=0)
 	      {
 					//program runs to here, there should be a found prime.
 	        printf("\n|Found a prime: %d\n",i);
@@ -57,7 +59,7 @@ void *do_work(void *thrd_arg)
 
     }
     pthread_mutex_lock (&count_mtx);
-    count = count + mycount + 4; //Here adds 4 because there are already 4 prime numbers. This "4" can also be added at the end of program.
+    count = count + mycount; //Here adds 4 because there are already 4 prime numbers. This "4" can also be added at the end of program.
     pthread_mutex_unlock (&count_mtx);
 
     /*Quit thread. */
@@ -123,6 +125,8 @@ int main(int argc, char *argv[])
 	End of "This part"
 	*/
 
+	/*initialize an array full of boolean values.*/
+	int array[n];
 
 	/* create arrays of thread ids and thread args */
 	thread_id = (pthread_t *)malloc(sizeof(pthread_t)*n_threads);
