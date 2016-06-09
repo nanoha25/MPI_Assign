@@ -61,7 +61,7 @@ void *do_work(void *thrd_arg)
 				for (j=i;i*j<max;j++)
 				{
 					primes[i*j]=0;
-					count = count + 1;
+					mycount = mycount + 1;
 				}
 			}
     }
@@ -81,7 +81,7 @@ void *do_work(void *thrd_arg)
 				for (j=i;i*j<max;j++)
 				{
 					primes[i*j]=0;
-					count = count + 1;
+					mycount = mycount + 1;
 				}
 			}
     }
