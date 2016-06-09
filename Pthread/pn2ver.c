@@ -45,7 +45,7 @@ void *do_work(void *thrd_arg)
 				if (i%j!=0)
 	      {
 					//program runs to here, there should be a found prime.
-	        printf("\nFound a prime: %d\n",i);
+	        printf("\n|Found a prime: %d\n",i);
 	        mycount = mycount + 1;
 	      }
 	      else if (i%j==0 && i==j)
@@ -76,7 +76,7 @@ void *do_work(void *thrd_arg)
 				if (i%j!=0)
 				{
 					//program runs to here, there should be a found prime.
-					printf("\nFound a prime: %d\n",i);
+					printf("\n|Found a prime: %d\n",i);
 					mycount = mycount + 1;
 				}
 				else if (i%j==0 && i==j)
