@@ -1,6 +1,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 struct thrd_data{
@@ -40,17 +41,12 @@ void *do_work(void *thrd_arg)
   {
     for (i=8;i<max;i++)
     {
-			for (j=8;j<=i;j++)
+			for (j=8;j<=floor(sqrt(i));j++)
 			{
 				if (i%j!=0)
 	      {
 					//program runs to here, there should be a found prime.
 	        printf("\n|Found a prime: %d\n",i);
-	        mycount = mycount + 1;
-	      }
-	      else if (i%j==0 && i==j)
-	      {
-					printf("\nFound a prime: %d\n",i);
 	        mycount = mycount + 1;
 	      }
 				else
@@ -71,7 +67,7 @@ void *do_work(void *thrd_arg)
   {
 		for (i=min;i<max;i++)
 		{
-			while(j<=i)
+			for (j=min;j<=floor(sqrt(i));j++)
 			{
 				if (i%j!=0)
 				{
@@ -79,16 +75,10 @@ void *do_work(void *thrd_arg)
 					printf("\n|Found a prime: %d\n",i);
 					mycount = mycount + 1;
 				}
-				else if (i%j==0 && i==j)
-				{
-					printf("\nFound a prime: %d\n",i);
-					mycount = mycount + 1;
-				}
 				else
 				{
 					printf("\n%d Not a prime.\n",i);
 				}
-				j++;
 			}
 
     }
