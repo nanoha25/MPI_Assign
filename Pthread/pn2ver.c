@@ -37,6 +37,7 @@ void *do_work(void *thrd_arg)
 	for (c=0; c<max; c++)
 	{
 		primes[c]=1;
+		printf("%d",primes[c]);
 	}
 
 	/* Initialize my part of the global array and keep local sum */
@@ -61,6 +62,7 @@ void *do_work(void *thrd_arg)
 				for (j=i;i*j<max;j++)
 				{
 					primes[i*j]=0;
+					printf("%d is not prime",primes[i*j]);
 					mycount = mycount + 1;
 				}
 			}
@@ -81,6 +83,7 @@ void *do_work(void *thrd_arg)
 				for (j=i;i*j<max;j++)
 				{
 					primes[i*j]=0;
+					printf("%d is not prime",primes[i*j]);					
 					mycount = mycount + 1;
 				}
 			}
@@ -150,7 +153,7 @@ int main(int argc, char *argv[])
 	for (i=0; i<n_threads; i++) {
 		pthread_join(thread_id[i], NULL);
 	}
-	printf ("Done. Count= %d \n", count);
+	printf ("Done. Count= %d \n", n-count);
 
 
 	/* Clean up and exit */
