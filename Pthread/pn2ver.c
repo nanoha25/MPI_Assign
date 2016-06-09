@@ -36,7 +36,7 @@ void *do_work(void *thrd_arg)
 	/*mark all numbers as prime*/
 	for (c=0; c<max; c++)
 	{
-		primes[c]=TRUE;
+		primes[c]=1;
 	}
 
 	/* Initialize my part of the global array and keep local sum */
@@ -60,7 +60,7 @@ void *do_work(void *thrd_arg)
 			{
 				for (j=i;i*j<max;j++)
 				{
-					primes[i*j]=FALSE;
+					primes[i*j]=0;
 					count = count + 1;
 				}
 			}
@@ -80,7 +80,7 @@ void *do_work(void *thrd_arg)
 			{
 				for (j=i;i*j<max;j++)
 				{
-					primes[i*j]=FALSE;
+					primes[i*j]=0;
 					count = count + 1;
 				}
 			}
