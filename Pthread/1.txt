@@ -1,0 +1,4 @@
+thread 0   min: 0  max: 4999  count: 23   work: 990
+thread 1   min: 5000  max: 9999  count: 23   work: 1106
+Number of primes is 1229.
+0 seconds.

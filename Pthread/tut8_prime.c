@@ -38,9 +38,9 @@ void *do_work(void *thrd_arg)
 	printf ("Thread %d finding prime from %d to %d\n", myid,min,max-1);
 	if (myid==0)
   {
-    for (i=8;i<max;i++)
+    for (i=2;i<max;i++)
     {
-      for (j=8; j<=i; j++)  //This for loop will determine if current number has more than 2 factors (1 and itself).
+      for (j=2; j<=i; j++)  //This for loop will determine if current number has more than 2 factors (1 and itself).
       {
         if (i%j==0)  //This line is the determine condition. It uses module division.
         {
@@ -69,7 +69,7 @@ void *do_work(void *thrd_arg)
   {
       for (i=min;i<max;i++)
       {
-        for (j=min; j<=i; j++)  //This for loop will determine if current number has more than 2 factors (1 and itself).
+        for (j=2; j<=i; j++)  //This for loop will determine if current number has more than 2 factors (1 and itself).
         {
           if (i%j==0)  //This line is the determine condition. It uses module division.
           {
@@ -87,17 +87,18 @@ void *do_work(void *thrd_arg)
           mycount = mycount + 1;
         }
       }
-    }
-    /*
-    Here, thread locks mutex, update global prime count, then unlock
-    */
-    pthread_mutex_lock (&count_mtx);
-    count = count + mycount;
-    pthread_mutex_unlock (&count_mtx);
+			/*
+			Here, thread locks mutex, update global prime count, then unlock
+			*/
+			pthread_mutex_lock (&count_mtx);
+			count = count + mycount;
+			pthread_mutex_unlock (&count_mtx);
 
-    /*Quit thread. */
-    pthread_exit(NULL);
+			/*Quit thread. */
+			pthread_exit(NULL);
   }
+
+}
 
 
 
