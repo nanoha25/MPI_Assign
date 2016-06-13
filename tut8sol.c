@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 
 	/* distribute load and create threads for computation */
 	nq = n / n_threads;    //The size of each task. This line is for partitioning. 
-	printf("np is: %d\n",nq);
+	printf("nq is: %d\n",nq);
 	nr = n % n_threads;    //
 	printf("nr is : %d\n",nr);
 
@@ -97,17 +97,21 @@ int main(int argc, char *argv[])
 	{
     t_arg[i].id = i;
 	t_arg[i].start = k;
+	/*Following code block determines the end of computation */
 		 if (i < nr)
 		 {
 			k = k + nq + 1;
-			printf("k: %d\n",k);   //add this to see how partition goes. 
+			printf("if branch");
+			printf("k: %d\n",k);   
 		 }
 		 else
 		 {
-			  k = k + nq;
-			printf("k: %d\n",k);   //add this to see how partition goes. 
+			k = k + nq;
+			printf("else branch");
+			printf("k: %d\n",k);   
 		 }
-   t_arg[i].end = k;
+	/*End of "following block"*/
+    t_arg[i].end = k;
     pthread_create(&thread_id[i], &attr, do_work, (void *) &t_arg[i]);
     }
 
