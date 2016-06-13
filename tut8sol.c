@@ -101,13 +101,13 @@ int main(int argc, char *argv[])
 		 if (i < nr)
 		 {
 			k = k + nq + 1;
-			printf("if branch");
+			printf("if branch ");
 			printf("k: %d\n",k);   
 		 }
 		 else
 		 {
 			k = k + nq;
-			printf("else branch");
+			printf("else branch ");
 			printf("k: %d\n",k);   
 		 }
 	/*End of "following block"*/
