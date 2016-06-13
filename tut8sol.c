@@ -83,12 +83,12 @@ int main(int argc, char *argv[])
 
 
 	/* create arrays of thread ids and thread args */
-	thread_id = (pthread_t *)malloc(sizeof(pthread_t)*n_threads);
+	thread_id = (pthread_t *)malloc(sizeof(pthread_t)*n_threads);   //arrays in C can be created through allocating memory spaces. 
 	t_arg = (struct thrd_data *)malloc(sizeof(struct thrd_data)*n_threads);
 
 	/* distribute load and create threads for computation */
-	nq = n / n_threads;
-	nr = n % n_threads;
+	nq = n / n_threads;    //The size of each task. This line is for partitioning. 
+	nr = n % n_threads;    //
 
 	k = 1;
 	for (i=0; i<n_threads; i++){
@@ -96,8 +96,10 @@ int main(int argc, char *argv[])
 	 t_arg[i].start = k;
 	 if (i < nr)
 	   	k = k + nq + 1;
+		printf("k: %d",k);   //add this to see how partition goes. 
 	 else
 		  k = k + nq;
+		printf("k: %d",k);   //add this to see how partition goes. 
    t_arg[i].end = k;
     pthread_create(&thread_id[i], &attr, do_work, (void *) &t_arg[i]);
 }

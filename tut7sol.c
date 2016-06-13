@@ -70,8 +70,8 @@ int main(int argc, char *argv[])
      /*
      "&thread[t]" is the thread id defined in "pthread_t". Refer back to "pthread_t threads[NUM_THREADS]". Using "&" because it fetches the address of each "threads[t]".
      "NULL" means program will use default attributes.
-     "PrintHello" is the function to be threaded. This function has a single argument (*arg): pointer to void.
-     But still dont fully understand (void *)
+     "PrintHello" is the function to be threaded. This function has a single argument. In here, this argument should be cast to void, which is shown as "(void*). 
+	 
      "&thread_data_array[t]" is the argument of function "PrintHello". Again, uses address to access data in individual array element.
         For example: thread_data_array[1], the second element of array "thread_data_array". 
      */
