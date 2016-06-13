@@ -91,18 +91,23 @@ int main(int argc, char *argv[])
 	nr = n % n_threads;    //
 
 	k = 1;
-	for (i=0; i<n_threads; i++){
+	for (i=0; i<n_threads; i++)
+	{
     t_arg[i].id = i;
-	 t_arg[i].start = k;
-	 if (i < nr)
-	   	k = k + nq + 1;
-		printf("k: %d",k);   //add this to see how partition goes. 
-	 else
-		  k = k + nq;
-		printf("k: %d",k);   //add this to see how partition goes. 
+	t_arg[i].start = k;
+		 if (i < nr)
+		 {
+			k = k + nq + 1;
+			printf("k: %d",k);   //add this to see how partition goes. 
+		 }
+		 else
+		 {
+			  k = k + nq;
+			printf("k: %d",k);   //add this to see how partition goes. 
+		 }
    t_arg[i].end = k;
     pthread_create(&thread_id[i], &attr, do_work, (void *) &t_arg[i]);
-}
+    }
 
 	/* Wait for all threads to complete then print global sum */
 	for (i=0; i<n_threads; i++) {
