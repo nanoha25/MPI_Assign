@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 
 	/* distribute load and create threads for computation */
 	nq = n / n_threads;    //The size of each task. This line is for partitioning. 
-	printf("np is: %d\n",np);
+	printf("np is: %d\n",nq);
 	nr = n % n_threads;    //
 	printf("nr is : %d\n",nr);
 
