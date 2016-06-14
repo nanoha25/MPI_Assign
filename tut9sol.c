@@ -26,8 +26,9 @@ typedef struct {    //<------------This line.
 
 void mylib_barrier_init(mylib_barrier_t *b) {
   b -> count = 0;  //This line is used to access the member "count" in structure "mylib_barrier_t", using a pointer variable "b" to access it.
-  pthread_mutex_init(&(b -> count_lock), NULL);  //initialize pthread mutex.
-  pthread_cond_init(&(b -> ok_to_proceed), NULL);  //initialize pthread condition.
+  //This entire "b -> count" can independently be considered as a variable, without an alias to access it. 
+  pthread_mutex_init(&(b -> count_lock), NULL);  //initialize pthread mutex. "b -> count_lock" means accessing the member "count_lock" in structure "mylib_barrier_t", using a pointer variable "b" to access it. 
+  pthread_cond_init(&(b -> ok_to_proceed), NULL);  //initialize condition pthread.
 }
 
 void mylib_barrier(mylib_barrier_t *b, int num_threads) {

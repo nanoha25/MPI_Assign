@@ -28,7 +28,7 @@ void *do_work(void *thrd_arg)
 
 	/* Initialize my part of the global array and keep local sum */
 	t_data = (struct thrd_data *) thrd_arg;
-	//This line creates a variable "t_data" based on structure "thrd_data".
+	//This line creates a variable "t_data" based on structure "thrd_data". "thrd_arg" is from "void *do_work(void *thrd_arg)". 
 	myid = t_data->id;
 	//This line is used to access the member "id" in structure "thrd_data" using a pointer to that structure.
 	//Note that the structure the member "id" acceess to is with name "t_data". "t_data" is originally a variable with type "thrd_data", and type "thrd_data" is defined in structure "thrd_data".
