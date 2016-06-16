@@ -12,7 +12,7 @@ struct thrd_data{
 	int end; /* the sub-range is from start to end-1 */
 };
 /*
-Again, till here we have created a structure, with three int type members.
+Again, till here we have created a structure, with three int type members. This structure is called "thrd_data". 
 */
 
 double  sum=0.0; /* global variable */
@@ -95,8 +95,9 @@ int main(int argc, char *argv[])
 	k = 1;
 	for (i=0; i<n_threads; i++)
 	{
-    t_arg[i].id = i;
-	t_arg[i].start = k;
+    t_arg[i].id = i;   //This line initiates a series of "id" field with "n_thread". Or, thread id is being assigned based on numbers of threads. 
+	//"t_arg[i]" is an array with structure type. "id" is one of those fields, or members, in structure "thrd_data". 
+	t_arg[i].start = k;   //This line initiates a series of "start" field with "k". "t_arg[i]" is an array with type "structure". "start" is one of those fields, or members, in structure "thrd_data". 
 	/*Following code block determines the end of computation */
 		 if (i < nr)
 		 {
